@@ -17,7 +17,7 @@ What the system does
 * Reunification requests can be created after a match is verified.
 * Volunteers can be registered and coordinated when additional support is needed.
 
-Basic Workflows
+Basic workflow
 
 Family reports missing person
           ↓
