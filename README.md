@@ -19,7 +19,6 @@ What the system does
 
 Basic Workflow
 
-```text
 Family reports missing person
           ↓
 Case is created
@@ -35,7 +34,6 @@ Authorized person verifies it
 Family receives the update
           ↓
 Reunification
-```
 
 Users
 Family
