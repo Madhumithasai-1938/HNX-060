@@ -17,24 +17,32 @@ What the system does
 * Reunification requests can be created after a match is verified.
 * Volunteers can be registered and coordinated when additional support is needed.
 
-Basic workflow
+Basic Workflow
+
 Family
-   ↓
+↓
 Reports Missing Person
-   ↓
+↓
 Case is Created
-   ↓
+↓
 Rescue Team Finds Person
-   ↓
-Person Added to System
-   ↓
+↓
+Person is Added to the System
+↓
 AI Identifies Possible Match
-   ↓
-Authorized Person Verifies
-   ↓
-Family Receives Update
-   ↓
+↓
+Authorized Person Verifies the Match
+↓
+Family Receives the Update
+↓
 Reunification 
+
+Users
+
+- Family
+- Rescue Team
+- Authorized Officer
+- System Administrator
 
 Users
 Family
