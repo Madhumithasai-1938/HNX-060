@@ -18,7 +18,7 @@ What the system does
 * Volunteers can be registered and coordinated when additional support is needed.
 
 Basic workflow
-
+''text
 Family reports missing person
           ↓
 Case is created
@@ -34,6 +34,7 @@ Authorized person verifies it
 Family receives the update
           ↓
 Reunification
+''
 
 Users
 Family
