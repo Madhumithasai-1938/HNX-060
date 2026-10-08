@@ -18,23 +18,23 @@ What the system does
 * Volunteers can be registered and coordinated when additional support is needed.
 
 Basic workflow
-''text
-Family reports missing person
-          ↓
-Case is created
-          ↓
-Rescue team finds a person
-          ↓
-Person is added to the system
-          ↓
-Possible match is identified
-          ↓
-Authorized person verifies it
-          ↓
-Family receives the update
-          ↓
-Reunification
-''
+Family
+   ↓
+Reports Missing Person
+   ↓
+Case is Created
+   ↓
+Rescue Team Finds Person
+   ↓
+Person Added to System
+   ↓
+AI Identifies Possible Match
+   ↓
+Authorized Person Verifies
+   ↓
+Family Receives Update
+   ↓
+Reunification 
 
 Users
 Family
