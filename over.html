@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunify-X Workflow</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            /* DARK HACKATHON BACKGROUND */
+            background:
+                radial-gradient(circle at 10% 20%, #1d4ed8 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, #7c3aed 0%, transparent 25%),
+                linear-gradient(135deg, #020617, #0f172a, #111827);
+
+            text-align: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        h1 {
+            margin: 35px 0 5px;
+            font-size: 42px;
+            color: white;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(96,165,250,0.6);
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            margin-bottom: 35px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .workflow {
+            width: 92%;
+            max-width: 1100px;
+            margin: auto;
+            padding-bottom: 60px;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.96);
+            padding: 18px 25px;
+            margin: 10px auto;
+            border-radius: 14px;
+            width: 360px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.35);
+
+            font-size: 17px;
+            font-weight: bold;
+            color: #0f172a;
+
+            border: 2px solid rgba(255,255,255,0.5);
+
+            transition: 0.2s;
+        }
+
+        .box:hover {
+            transform: scale(1.03);
+            box-shadow:
+                0 12px 35px rgba(96,165,250,0.35);
+        }
+
+        /* DISASTER */
+        .start {
+            background: linear-gradient(135deg, #fecaca, #f87171);
+            border: 2px solid #ef4444;
+            color: #450a0a;
+        }
+
+        /* AI */
+        .ai {
+            background: linear-gradient(135deg, #ddd6fe, #a78bfa);
+            border: 2px solid #8b5cf6;
+            color: #2e1065;
+        }
+
+        /* DATABASE / MAP */
+        .database {
+            background: linear-gradient(135deg, #bfdbfe, #60a5fa);
+            border: 2px solid #3b82f6;
+            color: #082f49;
+        }
+
+        /* VERIFIED */
+        .success {
+            background: linear-gradient(135deg, #bbf7d0, #4ade80);
+            border: 2px solid #22c55e;
+            color: #052e16;
+        }
+
+        /* REJECTED */
+        .danger {
+            background: linear-gradient(135deg, #fecaca, #f87171);
+            border: 2px solid #ef4444;
+            color: #450a0a;
+        }
+
+        /* VOLUNTEER */
+        .volunteer {
+            background: linear-gradient(135deg, #fde68a, #f59e0b);
+            border: 2px solid #f59e0b;
+            color: #451a03;
+        }
+
+        /* ARROWS */
+        .arrow {
+            font-size: 30px;
+            color: #93c5fd;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(147,197,253,0.7);
+            margin: 2px;
+        }
+
+        /* BRANCHES */
+        .branches {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            margin: 18px auto;
+        }
+
+        .branch {
+            width: 300px;
+        }
+
+        .branch .box {
+            width: 100%;
+        }
+
+        small {
+            color: #334155;
+            font-size: 13px;
+        }
+
+        /* FINAL */
+        .final {
+            font-size: 22px;
+
+            background: linear-gradient(
+                135deg,
+                #86efac,
+                #22c55e
+            );
+
+            border: 3px solid #4ade80;
+
+            color: #052e16;
+
+            box-shadow:
+                0 0 30px rgba(34,197,94,0.45);
+
+            padding: 22px;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 25px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .branches {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .box {
+                width: 90%;
+            }
+
+            .branch {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🚨 Reunify-X</h1>
+
+    <div class="subtitle">
+        AI-Powered Disaster Family Reunification Workflow
+    </div>
+
+    <div class="workflow">
+
+        <div class="box start">
+            🚨 DISASTER OCCURS
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box">
+            👨‍👩‍👧 Family Member Separated
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box">
+            📝 Report / Register
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- INFORMATION COLLECTION -->
+
+        <div class="branches">
+
+            <div class="branch">
+                <div class="box">
+                    👨‍👩‍👧 Family Information
+                    <br>
+                    Collected
+                </div>
+            </div>
+
+            <div class="branch">
+                <div class="box">
+                    🚑 Rescue / Shelter /
+                    <br>
+                    🏥 Hospital Information
+                </div>
+            </div>
+
+            <div class="branch">
+                <div class="box volunteer">
+                    🦺 Volunteer Information
+                    <br>
+                    📍 Location & Person Details
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box database">
+            🗄️ Central Database
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box ai">
+            🤖 AI Matching Engine
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box">
+            Name + Age + Location
+            <br>
+            + Other Available Details
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box ai">
+            📊 Match Score
+            <br>
+            <small>Example: 92% Possible Match</small>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- CONFIDENCE -->
+
+        <div class="branches">
+
+            <div class="branch">
+
+                <div class="box success">
+                    🟢 High Confidence
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="box">
+                    🔍 Verification Required
+                </div>
+
+            </div>
+
+            <div class="branch">
+
+                <div class="box danger">
+                    🟡 Low Confidence
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="box">
+                    ⚠️ Needs Verification
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box">
+            👮 Authority Verification
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- VERIFICATION -->
+
+        <div class="branches">
+
+            <div class="branch">
+
+                <div class="box success">
+                    ✅ VERIFIED
+                </div>
+
+            </div>
+
+            <div class="branch">
+
+                <div class="box danger">
+                    ❌ REJECTED
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box database">
+            🗺️ Map + Authority Dashboard
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box">
+            📱 Family Update
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="box final">
+            👨‍👩‍👧❤️ REUNIFICATION
+        </div>
+
+        <div class="footer">
+            AI • Verification • Location • Coordination • Reunification
+        </div>
+
+    </div>
+
+</body>
+</html>
