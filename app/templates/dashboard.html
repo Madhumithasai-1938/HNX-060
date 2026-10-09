@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | SafeLink{% endblock %}
+{% block content %}
+<section class="hero">
+<div>
+<p class="eyebrow">DISASTER RESPONSE NETWORK</p>
+<h1>Family reunification, made safer.</h1>
+<p>Connect Family IDs, rescued people, community teams and volunteers in one platform.</p>
+</div>
+</section>
+
+<div class="stats">
+<div><b>{{ stats.members }}</b><span>Registered Members</span></div>
+<div><b>{{ stats.families }}</b><span>Family IDs</span></div>
+<div><b>{{ stats.rescued }}</b><span>Rescued People</span></div>
+<div><b>{{ stats.volunteers }}</b><span>Volunteers</span></div>
+</div>
+
+<div class="grid">
+<a class="module" href="{{ url_for('main.register') }}">
+<strong>Register</strong><span>Register family members and personal details.</span>
+</a>
+<a class="module" href="{{ url_for('main.family') }}">
+<strong>Family ID</strong><span>Search separated family members.</span>
+</a>
+<a class="module" href="{{ url_for('main.rescue') }}">
+<strong>Rescue</strong><span>Manage Rescue Teams A, B, C and D.</span>
+</a>
+<a class="module" href="{{ url_for('main.community') }}">
+<strong>Community</strong><span>View Community IDs and locations.</span>
+</a>
+<a class="module" href="{{ url_for('main.volunteers') }}">
+<strong>Volunteer ID</strong><span>Register rescue, medical and logistics skills.</span>
+</a>
+</div>
+{% endblock %}

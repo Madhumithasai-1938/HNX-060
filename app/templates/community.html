@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Community | SafeLink{% endblock %}
+{% block content %}
+<h1>Community Rescue Records</h1>
+<p class="muted">Community ID identifies a rescued person and their registered movement history.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Community ID</th><th>Person</th><th>Family ID</th><th>Team</th><th>Current Location</th><th>Movement History</th></tr>
+{% for p in people %}
+<tr>
+<td><b>{{p.community_id}}</b></td>
+<td>{{p.name}}<br>{{p.phone}}</td>
+<td>{{p.family_id}}</td>
+<td>{{p.team_name}}</td>
+<td>{{p.current_location}}</td>
+<td>
+{% for h in p.history %}
+<div class="history">{{h.location}}<br><small>{{h.moved_at}}</small></div>
+{% else %}
+<span class="muted">No movement history</span>
+{% endfor %}
+</td>
+</tr>
+{% else %}
+<tr><td colspan="6">No rescued people.</td></tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
