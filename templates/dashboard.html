@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        ResQLink Dashboard
+    </p>
+
+    <div class="dashboard-action">
+
+        <h2>System Overview</h2>
+
+        <div class="dashboard-stats">
+
+            <div class="stat-card">
+                <h3>Registered Families</h3>
+                <p>{{ family_count }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Missing Persons</h3>
+                <p>{{ missing_count }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Found / Sheltered</h3>
+                <p>{{ found_count }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Verified Matches</h3>
+                <p>{{ verified_count }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-action">
+
+        <h2>Missing Person Cases</h2>
+
+        {% if missing_persons %}
+
+            {% for person in missing_persons %}
+
+            <div class="family-member">
+
+                <h3>
+                    {{ person["name"] }}
+                </h3>
+
+                <p>
+                    <strong>Case ID:</strong>
+                    {{ person["case_id"] }}
+                </p>
+
+                <p>
+                    <strong>Age:</strong>
+                    {{ person["age"] }}
+                </p>
+
+                <p>
+                    <strong>Last Known Location:</strong>
+                    {{ person["last_location"] }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+
+                    {% if person["status"] == "Found" %}
+
+                        <span class="status-found">
+                            Found
+                        </span>
+
+                    {% else %}
+
+                        <span class="status-missing">
+                            Missing
+                        </span>
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="small-text">
+                No missing person cases registered yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="dashboard-action">
+
+        <h2>Quick Actions</h2>
+
+        <a href="{{ url_for('registration') }}"
+           class="main-button">
+            Registration
+        </a>
+
+        <a href="{{ url_for('community_search') }}"
+           class="main-button">
+            Check Case Status
+        </a>
+
+        <a href="{{ url_for('rescue_dashboard') }}"
+           class="main-button">
+            Rescue Team Dashboard
+        </a>
+
+    </div>
+
+    <a href="{{ url_for('home') }}"
+       class="back-button">
+        Back to Home
+    </a>
+
+</div>
+
+</body>
+</html>

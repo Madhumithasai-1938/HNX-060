@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Rescue Team Dashboard - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        Rescue Team Dashboard
+    </p>
+
+
+    <!-- ================================================= -->
+    <!-- REGISTERED RESCUE TEAM MEMBERS -->
+    <!-- ================================================= -->
+
+    <div class="dashboard-action">
+
+        <h2>Registered Rescue Team Members</h2>
+
+        {% if members %}
+
+            {% for member in members %}
+
+                <div class="team-member">
+
+                    <h3>
+                        {{ member["name"] }}
+                    </h3>
+
+                    <p>
+                        <strong>Age:</strong>
+                        {{ member["age"] }}
+                    </p>
+
+                    <p>
+                        <strong>Team / Organization:</strong>
+                        {{ member["team"] }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="small-text">
+                No rescue team members registered yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- MISSING PERSON CASES -->
+    <!-- ================================================= -->
+
+    <div class="dashboard-action">
+
+        <h2>Missing Person Cases</h2>
+
+        {% if missing_persons %}
+
+            {% for person in missing_persons %}
+
+                <div class="team-section">
+
+                    <h3>
+                        {{ person["name"] }}
+                    </h3>
+
+                    <p>
+                        <strong>Case ID:</strong>
+                        {{ person["case_id"] }}
+                    </p>
+
+                    <p>
+                        <strong>Age:</strong>
+                        {{ person["age"] }}
+                    </p>
+
+                    <p>
+                        <strong>Last Known Location:</strong>
+                        {{ person["last_location"] }}
+                    </p>
+
+                    <p>
+                        <strong>Description:</strong>
+                        {{ person["description"] or "No description provided." }}
+                    </p>
+
+                    <p>
+                        <strong>Contact:</strong>
+                        {{ person["contact"] }}
+                    </p>
+
+
+                    <!-- FIND MATCHES BUTTON -->
+
+                    <a href="{{ url_for('find_matches', missing_id=person['id']) }}"
+                       class="main-button">
+
+                        Find Possible Matches
+
+                    </a>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="small-text">
+                No missing person cases registered yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- FOUND / SHELTERED PERSONS -->
+    <!-- ================================================= -->
+
+    <div class="dashboard-action">
+
+        <h2>Found / Sheltered Persons</h2>
+
+        {% if found_persons %}
+
+            {% for person in found_persons %}
+
+                <div class="team-section">
+
+                    <h3>
+                        {{ person["name"] }}
+                    </h3>
+
+                    <p>
+                        <strong>Age:</strong>
+                        {{ person["age"] }}
+                    </p>
+
+                    <p>
+                        <strong>Current Location:</strong>
+                        {{ person["current_location"] }}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        {{ person["status"] }}
+                    </p>
+
+                    <p>
+                        <strong>Description:</strong>
+                        {{ person["description"] or "No description provided." }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="small-text">
+                No found or sheltered persons registered yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- VERIFICATION HISTORY -->
+    <!-- ================================================= -->
+
+    <div class="dashboard-action">
+
+        <h2>Match Verification History</h2>
+
+        {% if verification_statuses %}
+
+            {% for verification in verification_statuses %}
+
+                <div class="team-section">
+
+                    <h3>
+                        Verification #{{ verification["id"] }}
+                    </h3>
+
+                    <p>
+                        <strong>Missing Person ID:</strong>
+                        {{ verification["missing_id"] }}
+                    </p>
+
+                    <p>
+                        <strong>Found Person ID:</strong>
+                        {{ verification["found_id"] }}
+                    </p>
+
+                    <p>
+                        <strong>Match Confidence:</strong>
+                        {{ verification["match_score"] }}%
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+
+                        {% if verification["status"] == "Verified" %}
+
+                            <span class="status-found">
+                                Verified
+                            </span>
+
+                        {% elif verification["status"] == "Rejected" %}
+
+                            <span class="status-missing">
+                                Rejected
+                            </span>
+
+                        {% else %}
+
+                            {{ verification["status"] }}
+
+                        {% endif %}
+
+                    </p>
+
+                    <p>
+                        <strong>Verified At:</strong>
+                        {{ verification["verified_at"] }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="small-text">
+                No match verification has been performed yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- NAVIGATION -->
+    <!-- ================================================= -->
+
+    <div class="dashboard-action">
+
+        <h2>Quick Actions</h2>
+
+        <a href="{{ url_for('missing_person') }}"
+           class="main-button">
+
+            Register Missing Person
+
+        </a>
+
+        <a href="{{ url_for('found_person') }}"
+           class="main-button">
+
+            Register Found / Sheltered Person
+
+        </a>
+
+        <a href="{{ url_for('dashboard') }}"
+           class="main-button">
+
+            Main Dashboard
+
+        </a>
+
+    </div>
+
+
+    <a href="{{ url_for('home') }}"
+       class="back-button">
+
+        Back to Home
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

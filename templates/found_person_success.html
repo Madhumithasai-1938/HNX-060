@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Found Person Registered - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        Found / Sheltered Person Registered
+    </p>
+
+    <div class="dashboard-action">
+
+        <h2>
+            Registration Successful
+        </h2>
+
+        <p>
+            The found or sheltered person has been
+            registered successfully.
+        </p>
+
+    </div>
+
+    <div class="dashboard-action">
+
+        <h2>
+            Person Information
+        </h2>
+
+        <p>
+            <strong>Name:</strong>
+            {{ name }}
+        </p>
+
+        <p>
+            <strong>Age:</strong>
+            {{ age }}
+        </p>
+
+        <p>
+            <strong>Current Location:</strong>
+            {{ current_location }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ status }}
+        </p>
+
+    </div>
+
+    <div class="dashboard-action">
+
+        <h2>
+            What happens next?
+        </h2>
+
+        <p>
+            ResQLink will compare this person's information
+            with registered missing-person cases.
+        </p>
+
+        <p>
+            Possible matches can be reviewed and verified
+            by the rescue team.
+        </p>
+
+    </div>
+
+    <a href="{{ url_for('rescue_dashboard') }}"
+       class="main-button">
+        Go to Rescue Dashboard
+    </a>
+
+    <a href="{{ url_for('registration') }}"
+       class="back-button">
+        Back to Registration
+    </a>
+
+</div>
+
+</body>
+</html>

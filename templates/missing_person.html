@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register Missing Person - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        Register Missing Person
+    </p>
+
+    <div class="form-section">
+
+        <form action="{{ url_for('register_missing_person') }}"
+              method="POST">
+
+            <label for="name">
+                Person Name
+            </label>
+
+            <input type="text"
+                   id="name"
+                   name="name"
+                   placeholder="Enter person's name"
+                   required>
+
+
+            <label for="age">
+                Age
+            </label>
+
+            <input type="number"
+                   id="age"
+                   name="age"
+                   placeholder="Enter age"
+                   min="1"
+                   required>
+
+
+            <label for="description">
+                Description
+            </label>
+
+            <textarea id="description"
+                      name="description"
+                      rows="4"
+                      placeholder="Enter appearance or identifying details"></textarea>
+
+
+            <label for="last_location">
+                Last Known Location
+            </label>
+
+            <input type="text"
+                   id="last_location"
+                   name="last_location"
+                   placeholder="Example: Gandhipuram, Coimbatore"
+                   required>
+
+
+            <label for="contact">
+                Contact Number
+            </label>
+
+            <input type="tel"
+                   id="contact"
+                   name="contact"
+                   placeholder="Enter contact number"
+                   required>
+
+
+            <button type="submit"
+                    class="main-button">
+
+                Register Missing Person
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <a href="{{ url_for('registration') }}"
+       class="back-button">
+
+        Back to Registration
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

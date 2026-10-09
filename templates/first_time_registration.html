@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>First-Time Registration - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        First-Time Registration
+    </p>
+
+
+    <div class="form-section">
+
+        <form action="{{ url_for('register_family') }}"
+              method="POST">
+
+
+            <!-- YOUR DETAILS -->
+
+            <h2>Your Details</h2>
+
+            <label for="name">
+                Your Name
+            </label>
+
+            <input type="text"
+                   id="name"
+                   name="name"
+                   placeholder="Enter your name"
+                   required>
+
+
+            <label for="age">
+                Your Age
+            </label>
+
+            <input type="number"
+                   id="age"
+                   name="age"
+                   placeholder="Enter your age"
+                   min="1"
+                   required>
+
+
+            <label for="contact">
+                Contact Number
+            </label>
+
+            <input type="tel"
+                   id="contact"
+                   name="contact"
+                   placeholder="Enter contact number"
+                   required>
+
+
+            <!-- FAMILY MEMBERS -->
+
+            <h2 class="form-heading">
+                Family Members
+            </h2>
+
+            <div id="family-members">
+
+
+                <!-- FIRST FAMILY MEMBER -->
+
+                <div class="family-member-form">
+
+                    <h3>
+                        Family Member 1
+                    </h3>
+
+                    <label>
+                        Family Member Name
+                    </label>
+
+                    <input type="text"
+                           name="family_member_name[]"
+                           placeholder="Enter family member name"
+                           required>
+
+
+                    <label>
+                        Relationship
+                    </label>
+
+                    <select name="relationship[]"
+                            required>
+
+                        <option value="">
+                            Select Relationship
+                        </option>
+
+                        <option value="Father">
+                            Father
+                        </option>
+
+                        <option value="Mother">
+                            Mother
+                        </option>
+
+                        <option value="Brother">
+                            Brother
+                        </option>
+
+                        <option value="Sister">
+                            Sister
+                        </option>
+
+                        <option value="Husband">
+                            Husband
+                        </option>
+
+                        <option value="Wife">
+                            Wife
+                        </option>
+
+                        <option value="Son">
+                            Son
+                        </option>
+
+                        <option value="Daughter">
+                            Daughter
+                        </option>
+
+                        <option value="Grandfather">
+                            Grandfather
+                        </option>
+
+                        <option value="Grandmother">
+                            Grandmother
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADD MEMBER BUTTON -->
+
+            <button type="button"
+                    class="add-member-button"
+                    onclick="addFamilyMember()">
+
+                + Add Family Member
+
+            </button>
+
+
+            <!-- REGISTER -->
+
+            <button type="submit"
+                    class="main-button">
+
+                Register
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <a href="{{ url_for('registration') }}"
+       class="back-button">
+
+        Back to Registration
+
+    </a>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+let memberCount = 1;
+
+
+function addFamilyMember() {
+
+    memberCount++;
+
+    const familyMembers =
+        document.getElementById("family-members");
+
+
+    const newMember =
+        document.createElement("div");
+
+    newMember.className =
+        "family-member-form";
+
+
+    newMember.innerHTML = `
+
+        <h3>
+            Family Member ${memberCount}
+        </h3>
+
+        <label>
+            Family Member Name
+        </label>
+
+        <input type="text"
+               name="family_member_name[]"
+               placeholder="Enter family member name"
+               required>
+
+
+        <label>
+            Relationship
+        </label>
+
+        <select name="relationship[]"
+                required>
+
+            <option value="">
+                Select Relationship
+            </option>
+
+            <option value="Father">
+                Father
+            </option>
+
+            <option value="Mother">
+                Mother
+            </option>
+
+            <option value="Brother">
+                Brother
+            </option>
+
+            <option value="Sister">
+                Sister
+            </option>
+
+            <option value="Husband">
+                Husband
+            </option>
+
+            <option value="Wife">
+                Wife
+            </option>
+
+            <option value="Son">
+                Son
+            </option>
+
+            <option value="Daughter">
+                Daughter
+            </option>
+
+            <option value="Grandfather">
+                Grandfather
+            </option>
+
+            <option value="Grandmother">
+                Grandmother
+            </option>
+
+            <option value="Other">
+                Other
+            </option>
+
+        </select>
+
+    `;
+
+
+    familyMembers.appendChild(newMember);
+
+}
+
+</script>
+
+</body>
+
+</html>

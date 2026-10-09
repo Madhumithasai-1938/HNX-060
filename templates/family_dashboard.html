@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Family Dashboard - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        Family Dashboard
+    </p>
+
+
+    <!-- REGISTRATION DETAILS -->
+
+    <div class="dashboard-action">
+
+        <h2>
+            Registration Successful
+        </h2>
+
+        <p>
+            <strong>Your Name:</strong>
+            {{ name }}
+        </p>
+
+        <p>
+            <strong>Your Age:</strong>
+            {{ age }}
+        </p>
+
+        <p>
+            <strong>Contact Number:</strong>
+            {{ contact }}
+        </p>
+
+    </div>
+
+
+    <!-- FAMILY MEMBERS -->
+
+    <div class="dashboard-action">
+
+        <h2>
+            Registered Family Members
+        </h2>
+
+        {% if members %}
+
+            {% for member in members %}
+
+                <div class="family-member">
+
+                    <h3>
+                        Family Member {{ loop.index }}
+                    </h3>
+
+                    <p>
+                        <strong>Name:</strong>
+                        {{ member["family_member_name"] }}
+                    </p>
+
+                    <p>
+                        <strong>Relationship:</strong>
+                        {{ member["relationship"] }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="small-text">
+                No family members registered.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ACTIONS -->
+
+    <div class="dashboard-action">
+
+        <h2>
+            What would you like to do?
+        </h2>
+
+
+        <a href="{{ url_for('missing_person') }}"
+           class="main-button">
+
+            Register Missing Person
+
+        </a>
+
+
+        <a href="{{ url_for('found_person') }}"
+           class="main-button">
+
+            Register Found / Sheltered Person
+
+        </a>
+
+
+        <a href="{{ url_for('community_search') }}"
+           class="main-button">
+
+            Community Search
+
+        </a>
+
+
+        <a href="{{ url_for('registration') }}"
+           class="back-button">
+
+            Back to Registration
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

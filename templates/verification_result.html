@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Verification Result - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="registration-container">
+
+        <h1>
+            ResQLink
+        </h1>
+
+        <p class="subtitle">
+            Rescue Team Verification
+        </p>
+
+
+        {% if verification_status == "Verified" %}
+
+            <h2>
+                Match Verified
+            </h2>
+
+            <p class="instruction">
+                The rescue team has verified this possible match.
+            </p>
+
+            <div class="dashboard-action">
+
+                <h3>
+                    Verified Match
+                </h3>
+
+                <p>
+                    <strong>Missing Person:</strong>
+                    {{ missing[0] }}
+                </p>
+
+                <p>
+                    <strong>Age:</strong>
+                    {{ missing[1] }}
+                </p>
+
+                <p>
+                    <strong>Possible Found Person:</strong>
+                    {{ found[0] }}
+                </p>
+
+                <p>
+                    <strong>Age:</strong>
+                    {{ found[1] }}
+                </p>
+
+                <p>
+                    <strong>Current Location:</strong>
+                    {{ found[2] }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ found[3] }}
+                </p>
+
+                <p>
+                    <strong>Verification Status:</strong>
+                    Verified
+                </p>
+
+            </div>
+
+
+        {% else %}
+
+            <h2>
+                Match Rejected
+            </h2>
+
+            <p class="instruction">
+                The rescue team has rejected this possible match.
+            </p>
+
+            <div class="dashboard-action">
+
+                <h3>
+                    Rejected Match
+                </h3>
+
+                <p>
+                    <strong>Missing Person:</strong>
+                    {{ missing[0] }}
+                </p>
+
+                <p>
+                    <strong>Possible Found Person:</strong>
+                    {{ found[0] }}
+                </p>
+
+                <p>
+                    <strong>Verification Status:</strong>
+                    Rejected
+                </p>
+
+                <p class="small-text">
+                    This person should not be treated as a confirmed
+                    match based on the current verification.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ================================= -->
+        <!-- BACK TO DASHBOARD -->
+        <!-- ================================= -->
+
+        <a
+            href="{{ url_for('rescue_dashboard') }}"
+            class="main-button">
+
+            Back to Rescue Dashboard
+
+        </a>
+
+
+        <!-- ================================= -->
+        <!-- BACK TO MATCHING -->
+        <!-- ================================= -->
+
+        <a
+            href="{{ url_for('find_matches',
+            missing_id=missing[0] if missing else 0) }}"
+            class="back-button">
+
+            View Possible Matches
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

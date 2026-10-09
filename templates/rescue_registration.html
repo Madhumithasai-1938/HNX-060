@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Rescue Team Registration - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        Rescue Team Registration
+    </p>
+
+
+    <div class="form-section">
+
+        <form action="{{ url_for('register_rescue') }}"
+              method="POST">
+
+
+            <label for="name">
+                Name
+            </label>
+
+            <input type="text"
+                   id="name"
+                   name="name"
+                   placeholder="Enter your name"
+                   required>
+
+
+            <label for="age">
+                Age
+            </label>
+
+            <input type="number"
+                   id="age"
+                   name="age"
+                   placeholder="Enter your age"
+                   min="1"
+                   required>
+
+
+            <label for="team">
+                Rescue Team / Organization
+            </label>
+
+            <input type="text"
+                   id="team"
+                   name="team"
+                   placeholder="Enter team or organization name"
+                   required>
+
+
+            <button type="submit"
+                    class="main-button">
+
+                Register Rescue Member
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <a href="{{ url_for('registration') }}"
+       class="back-button">
+
+        Back to Registration
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

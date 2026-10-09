@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration - ResQLink</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        How would you like to register?
+    </p>
+
+    <div class="registration-options">
+
+        <a href="{{ url_for('first_time_registration') }}"
+           class="registration-card">
+
+            <h3>First-Time Registration</h3>
+
+            <p>
+                Register yourself and your family members.
+            </p>
+
+        </a>
+
+        <a href="{{ url_for('rescue_registration') }}"
+           class="registration-card">
+
+            <h3>Rescue Team Registration</h3>
+
+            <p>
+                Register as a member of the rescue team.
+            </p>
+
+        </a>
+
+        <a href="{{ url_for('missing_person') }}"
+           class="registration-card">
+
+            <h3>Register Missing Person</h3>
+
+            <p>
+                Report a person who is missing after a disaster.
+            </p>
+
+        </a>
+
+        <a href="{{ url_for('found_person') }}"
+           class="registration-card">
+
+            <h3>Register Found / Sheltered Person</h3>
+
+            <p>
+                Register a person found at a shelter,
+                hospital or relief centre.
+            </p>
+
+        </a>
+
+    </div>
+
+    <a href="{{ url_for('home') }}"
+       class="back-button">
+
+        Back to Home
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

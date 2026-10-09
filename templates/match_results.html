@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Possible Matches - ResQLink</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<div class="registration-container">
+
+    <h1 class="brand-heading"><img src="{{ url_for('static', filename='resqlink-logo.svg') }}" alt="ResQLink logo"> <span>ResQLink</span></h1>
+
+    <p class="subtitle">
+        Possible Match Results
+    </p>
+
+
+    <!-- MISSING PERSON -->
+
+    <div class="dashboard-action">
+
+        <h2>
+            Missing Person
+        </h2>
+
+        <h3>
+            {{ missing_person["name"] }}
+        </h3>
+
+        <p>
+            <strong>Age:</strong>
+            {{ missing_person["age"] }}
+        </p>
+
+        <p>
+            <strong>
+                Last Known Location:
+            </strong>
+
+            {{ missing_person["last_location"] }}
+        </p>
+
+        <p>
+            <strong>
+                Description:
+            </strong>
+
+            {{ missing_person["description"] or
+               "No description provided." }}
+        </p>
+
+        <p>
+            <strong>
+                Contact:
+            </strong>
+
+            {{ missing_person["contact"] }}
+        </p>
+
+    </div>
+
+
+    <!-- POSSIBLE MATCHES -->
+
+    <div class="dashboard-action">
+
+        <h2>
+            Possible Matches
+        </h2>
+
+
+        {% if matches %}
+
+            {% for match in matches %}
+
+                <div class="team-section">
+
+                    <h3>
+                        {{ match[0]["name"] }}
+                    </h3>
+
+
+                    <p>
+                        <strong>
+                            Match Confidence:
+                        </strong>
+
+                        {{ match[1] }}%
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Age:
+                        </strong>
+
+                        {{ match[0]["age"] }}
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Current Location:
+                        </strong>
+
+                        {{ match[0]["current_location"] }}
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Status:
+                        </strong>
+
+                        {{ match[0]["status"] }}
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Description:
+                        </strong>
+
+                        {{ match[0]["description"] or
+                           "No description provided." }}
+                    </p>
+
+
+                    <!-- SIMILARITY LEVEL -->
+
+                    {% if match[1] >= 80 %}
+
+                        <p>
+                            <strong>
+                                Similarity Level:
+                            </strong>
+
+                            High
+                        </p>
+
+                    {% elif match[1] >= 60 %}
+
+                        <p>
+                            <strong>
+                                Similarity Level:
+                            </strong>
+
+                            Medium
+                        </p>
+
+                    {% else %}
+
+                        <p>
+                            <strong>
+                                Similarity Level:
+                            </strong>
+
+                            Low
+                        </p>
+
+                    {% endif %}
+
+
+                    <!-- VERIFICATION -->
+
+                    <div class="dashboard-action">
+
+                        <h3>
+                            Rescue Team Verification
+                        </h3>
+
+                        <p class="small-text">
+                            Please verify the information before
+                            confirming the match.
+                        </p>
+
+
+                        <form
+                            action="{{ url_for(
+                                'verify_match',
+                                missing_id=missing_person['id'],
+                                found_id=match[0]['id']
+                            ) }}"
+                            method="POST"
+                        >
+
+                            <button type="submit">
+                                Verify Match
+                            </button>
+
+                        </form>
+
+
+                        <br>
+
+
+                        <form
+                            action="{{ url_for(
+                                'reject_match',
+                                missing_id=missing_person['id'],
+                                found_id=match[0]['id']
+                            ) }}"
+                            method="POST"
+                        >
+
+                            <button
+                                type="submit"
+                                class="add-button"
+                            >
+                                Reject Match
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="small-text">
+                No possible matches found.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- BACK -->
+
+    <a
+        href="{{ url_for('rescue_dashboard') }}"
+        class="back-button"
+    >
+        Back to Rescue Dashboard
+    </a>
+
+</div>
+
+</body>
+
+</html>
