@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Login | SafeLink{% endblock %}
+{% block content %}
+<div class="login-wrap">
+<div class="login-card">
+<div class="big-logo">S</div>
+<h1>SafeLink</h1>
+<p class="muted center">Disaster Family Reunification & Community Rescue</p>
+<form method="post">
+<label>Login Type</label>
+<select name="role">
+<option value="user">User</option>
+<option value="community">Community</option>
+</select>
+<label>Email</label>
+<input name="email" type="email" placeholder="Enter email" required>
+<label>Password</label>
+<input name="password" type="password" placeholder="Enter password" required>
+<button class="primary">Sign In</button>
+</form>
+<div class="demo">
+<b>Demo User</b><br>user@example.com / User@123<br><br>
+<b>Demo Community</b><br>admin@rescue.local / Admin@123
+</div>
+</div>
+</div>
+{% endblock %}
