@@ -19,22 +19,34 @@ What the system does
 
 Basic Workflow
 
-Workflow
+Family Reports Missing Person
 
-Family Reports Missing Person  
-⬇️  
-Case is Created  
-⬇️  
-Rescue Team Finds Person  
-⬇️  
-Person is Added to the System  
-⬇️  
-AI Identifies Possible Match  
-⬇️  
-Authorized Person Verifies the Match  
-⬇️  
-Family Receives the Update  
-⬇️  
+↓
+
+Case is Created
+
+↓
+
+Rescue Team Finds Person
+
+↓
+
+Person is Added to the System
+
+↓
+
+AI Identifies Possible Match
+
+↓
+
+Authorized Person Verifies the Match
+
+↓
+
+Family Receives the Update
+
+↓
+
 Reunification
 
 Users
